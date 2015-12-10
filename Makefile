@@ -1,4 +1,4 @@
-NAME = nomDuProgrames
+NAME = fillit
 
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra
