@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:22:27 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 10:04:23 by jbelless         ###   ########.fr       */
+/*   Updated: 2015/12/11 10:13:26 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 #include <libft.h>
 #include <tetriminos.h>
 
-int	tabpe[3][4] = {
-	{0, 4, 5, 10}, // Tvetical gauche
-	{0, 1, 6, 7}, // Zhorizontal
-	{0, 1, 5, 6} // carre
-};
-
-static int ft_formeexistante(int *j)
+static int	ft_formeexistante(int *j)
 {
 	int	i;
 	int	k;
@@ -36,7 +30,7 @@ static int ft_formeexistante(int *j)
 		while (i < 4)
 		{
 			if (j[i] != TABPE[k][i])
-				break;
+				break ;
 			i++;
 			if (i == 4)
 				return (1);
@@ -46,7 +40,7 @@ static int ft_formeexistante(int *j)
 	return (0);
 }
 
-static int		ft_cf(char *str)
+static int	ft_cf(char *str)
 {
 	int i;
 	int *j;
@@ -63,13 +57,12 @@ static int		ft_cf(char *str)
 		}
 		i++;
 	}
-
 	if (ft_formeexistante(j - 4))
 		return (1);
 	return (0);
 }
 
-int		check_tetr(char	*tetr)
+int			check_tetr(char *tetr)
 {
 	unsigned int	nbp;
 	unsigned int	nbh;
@@ -78,7 +71,7 @@ int		check_tetr(char	*tetr)
 	nbp = 0;
 	nbh = 0;
 	i = 1;
-	while(*tetr)
+	while (*tetr)
 	{
 		if (*tetr == '.')
 			++nbp;
@@ -96,4 +89,3 @@ int		check_tetr(char	*tetr)
 		return (0);
 	return (1);
 }
-

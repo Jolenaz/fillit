@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:01:49 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/10 17:56:26 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/11 10:09:01 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*read_file(int fd)
 	return (0);
 }
 
-int		load_file(char *file_name)
+int			load_file(char *file_name)
 {
 	int		fd;
 

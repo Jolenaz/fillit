@@ -6,19 +6,13 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:24:14 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 09:58:57 by jbelless         ###   ########.fr       */
+/*   Updated: 2015/12/11 10:08:20 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TETRIMINOS_H
 # define TETRIMINOS_H
 
-/*int	tabpe[3][4] = {
-  {0, 4, 5, 10}, // Tvetical gauche
-  {0, 1, 6, 7}, // Zhorizontal
-  {0, 1, 5, 6} // carre
-  };
-  */
 int		check_tetr(char *tetr);
 
 #ifdef VAR_GLOBALES
