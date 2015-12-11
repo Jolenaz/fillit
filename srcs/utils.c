@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:33:29 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 17:47:37 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/11 18:23:44 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	error(char *error)
 {
 	if (DEBUG == 1)
 	{
-		ft_putstr("\033[38;5;47m");
+		ft_putstr("\033[38;5;9m Error > ");
 		ft_putendl(error);
 	}
 	else
-		ft_putstr("Error");
+		ft_putendl("Error");
 	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:01:49 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 17:24:48 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/11 18:17:54 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <fcntl.h>
 #include <libft.h>
 #include <tetriminos.h>
-#include <stdio.h>
 
 static int	**create_tab(char *buf)
 {
