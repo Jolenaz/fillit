@@ -6,10 +6,11 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:22:27 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/10 18:20:22 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/11 10:04:23 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#define VAR_GLOBALES
 #include <libft.h>
 #include <tetriminos.h>
 
@@ -24,17 +25,17 @@ static int ft_formeexistante(int *j)
 	int	i;
 	int	k;
 
-	i = 0;
+	i = 4;
 	while (i-- >= 0)
 		j[i] -= j[0];
 	i = 0;
 	k = 0;
-	while (k < 3)
+	while (k < 19)
 	{
 		i = 0;
 		while (i < 4)
 		{
-			if (j[i] != tabpe[k][i])
+			if (j[i] != TABPE[k][i])
 				break;
 			i++;
 			if (i == 4)
