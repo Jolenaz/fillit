@@ -6,63 +6,48 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:22:27 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 10:13:26 by jbelless         ###   ########.fr       */
+/*   Updated: 2015/12/11 17:41:29 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define VAR_GLOBALES
 #include <libft.h>
 #include <tetriminos.h>
 
-static int	ft_formeexistante(int *j)
+static int	check_voisin(char *tab, int j)
 {
-	int	i;
-	int	k;
+	int		i;
 
-	i = 4;
-	while (i-- >= 0)
-		j[i] -= j[0];
 	i = 0;
-	k = 0;
-	while (k < 19)
-	{
-		i = 0;
-		while (i < 4)
-		{
-			if (j[i] != TABPE[k][i])
-				break ;
-			i++;
-			if (i == 4)
-				return (1);
-		}
-		k++;
-	}
-	return (0);
+	if (tab[j - 1] == '#')
+		i++;
+	if (tab[j + 1] == '#')
+		i++;
+	if (tab[j - 5] =='#' && j > 5)
+		i++;
+	if (tab[j + 5] =='#' && j < 15)
+		i++;
+	return (i);
 }
 
-static int	ft_cf(char *str)
+static int	check_piece(char *str)
 {
-	int i;
-	int *j;
+	int		i;
+	int		voisin;
 
 	i = 0;
-	if ((j = (int*)malloc(sizeof(int) * 4)) == NULL)
-		return (0);
+	voisin = 0;
 	while (i < 20)
 	{
 		if (str[i] == '#')
-		{
-			*j = i;
-			j++;
-		}
+			voisin += check_voisin(str, i);
 		i++;
 	}
-	if (ft_formeexistante(j - 4))
+	if (voisin > 5)
 		return (1);
 	return (0);
 }
 
-int			check_tetr(char *tetr)
+int			check_tetr(char *tab)
 {
 	unsigned int	nbp;
 	unsigned int	nbh;
@@ -71,21 +56,22 @@ int			check_tetr(char *tetr)
 	nbp = 0;
 	nbh = 0;
 	i = 1;
-	while (*tetr)
+	while (*tab)
 	{
-		if (*tetr == '.')
+		if (*tab == '.')
 			++nbp;
-		else if (*tetr == '#')
+		else if (*tab == '#')
 			++nbh;
-		else if (*tetr == '\n' && ((i - i / 21) % 5) != 0 && (i % 21) != 0)
+		else if (*tab == '\n' && ((i - i / 21) % 5) != 0 && (i % 21) != 0)
 			return (0);
-		tetr++;
+		tab++;
 		i++;
-		if (i % 21 == 0 || *tetr == '\0')
-			if (nbh != 4 * i / 21 || nbp != 12 * i / 21 || !ft_cf(tetr - 20))
+		if (i % 21 == 0 || *tab == '\0')
+			if (nbh != 4 * i / 21 || nbp != 12 * i / 21
+					|| !check_piece(tab - 20))
 				return (0);
 	}
-	if (*(tetr - 2) == '\n')
+	if (*(tab - 2) == '\n')
 		return (0);
 	return (1);
 }
