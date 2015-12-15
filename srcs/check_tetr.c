@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:22:27 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 17:41:29 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/15 15:10:43 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static int	check_voisin(char *tab, int j)
 		i++;
 	if (tab[j + 1] == '#')
 		i++;
-	if (tab[j - 5] =='#' && j > 5)
+	if (tab[j - 5] == '#' && j > 5)
 		i++;
-	if (tab[j + 5] =='#' && j < 15)
+	if (tab[j + 5] == '#' && j < 15)
 		i++;
 	return (i);
 }

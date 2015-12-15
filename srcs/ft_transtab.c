@@ -6,11 +6,12 @@
 /*   By: jbelless <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 13:32:46 by jbelless          #+#    #+#             */
-/*   Updated: 2015/12/11 17:55:31 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/15 15:33:04 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
+#include <utils.h>
 
 static void	ft_init(int **tab)
 {
@@ -59,21 +60,20 @@ int			**ft_transtab(int **tab, size_t s)
 	i = 0;
 	if ((res = ft_intnewtab()) == NULL)
 		return (NULL);
-	while (i < 27)
+	while (tab[i][0] != -1)
 	{
 		res[i][0] = tab[i][0];
 		k = 0;
 		j = 1;
 		while (++j < 5)
 		{
-			if (tab[i][j] == 0)
-				res[i][0] = -1;
-			else if (tab[i][j] == tab[i][j - 1] + 1)
+			if (tab[i][j] == tab[i][j - 1] + 1)
 				res[i][j] = tab[i][j] % 4 + k * s;
 			else
 				res[i][j] = tab[i][j] % 4 + ++k * s;
 		}
 		i++;
 	}
+	tab[i][0] = -1;
 	return (res);
 }

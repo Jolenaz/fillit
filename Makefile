@@ -10,7 +10,7 @@ LIB_PATH = ./lib/
 
 LIB_NAME = -lft
 
-SRC_NAME = check_tetr.c read_file.c utils.c main.c
+SRC_NAME = solve.c ft_transtab.c check_tetr.c read_file.c utils.c main.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
