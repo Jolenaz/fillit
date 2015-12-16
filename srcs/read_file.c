@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:01:49 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 16:25:28 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 16:46:43 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,6 @@ static int	**create_tab(char *buf)
 	if ((tabpd[k] = (int*)malloc(sizeof(int) * 5)) == NULL)
 		return (NULL);
 	tabpd[k][0] = -1;
-	k = 0;
-	i = 0;
-	while (tabpd[k][0] != -1)
-	{
-		i = 0;
-		ft_putstr("C");
-		while (i < 5)
-		{
-			ft_putnbr(tabpd[k][i]);
-			ft_putchar(',');
-			i++;
-		}
-		ft_putchar('\n');
-		k++;
-	}
 	return (tabpd);
 }
 

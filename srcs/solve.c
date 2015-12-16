@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:20:13 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 16:40:49 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 16:47:20 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,6 @@ static char	*resolve(int **tabpd, size_t s)
 			grille[i] = '.';
 		i++;
 	}
-	i = 0;
-	int k = 0;
-	while (tabpd[i][0] != -1)
-	{
-		k = 0;
-		while (k < 5)
-		{
-			ft_putnbr(tabpd[i][k]);
-			k++;
-		}
-		ft_putchar('\n');
-		i++;
-
-	}
 	if (ft_placepiece(grille, tabpd, 0))
 		return(grille);
 	return(NULL);
@@ -123,8 +109,6 @@ char	*ft_solve(int **tabpd)
 
 	s = size_min(tabpd);
 	while ((resultat = resolve(ft_transtab(tabpd , s), s)) == NULL)
-	{
 		s++;
-	}
 	return (resultat);
 }
