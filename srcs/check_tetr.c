@@ -6,11 +6,12 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:22:27 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/15 15:10:43 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 14:36:10 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <utils.h>
 #include <tetriminos.h>
 
 static int	check_voisin(char *tab, int j)
@@ -18,11 +19,11 @@ static int	check_voisin(char *tab, int j)
 	int		i;
 
 	i = 0;
-	if (tab[j - 1] == '#')
+	if (tab[j - 1] == '#' && j > 0)
 		i++;
 	if (tab[j + 1] == '#')
 		i++;
-	if (tab[j - 5] == '#' && j > 5)
+	if (tab[j - 5] == '#' && j >= 5)
 		i++;
 	if (tab[j + 5] == '#' && j < 15)
 		i++;
@@ -42,12 +43,12 @@ static int	check_piece(char *str)
 			voisin += check_voisin(str, i);
 		i++;
 	}
-	if (voisin > 5)
-		return (1);
-	return (0);
+	if (voisin < 6)
+		error("forme de la piece");
+	return (1);
 }
 
-int			check_tetr(char *tab)
+int			check_tetr(char *buf)
 {
 	unsigned int	nbp;
 	unsigned int	nbh;
@@ -56,22 +57,22 @@ int			check_tetr(char *tab)
 	nbp = 0;
 	nbh = 0;
 	i = 1;
-	while (*tab)
+	while (*buf)
 	{
-		if (*tab == '.')
+		if (*buf == '.')
 			++nbp;
-		else if (*tab == '#')
+		else if (*buf == '#')
 			++nbh;
-		else if (*tab == '\n' && ((i - i / 21) % 5) != 0 && (i % 21) != 0)
-			return (0);
-		tab++;
+		else if (*buf == '\n' && ((i - i / 21) % 5) != 0 && (i % 21) != 0)
+			error("error position \n ou nombre de \n");
+		buf++;
 		i++;
-		if (i % 21 == 0 || *tab == '\0')
+		if (i % 21 == 0 || *buf == '\0')
 			if (nbh != 4 * i / 21 || nbp != 12 * i / 21
-					|| !check_piece(tab - 20))
-				return (0);
+					|| !check_piece(buf - 20))
+				error("nb de . ou nb de #");
 	}
-	if (*(tab - 2) == '\n')
+	if (*(buf - 2) == '\n')
 		return (0);
 	return (1);
 }
