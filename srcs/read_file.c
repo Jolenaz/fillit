@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:01:49 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 16:46:43 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 17:04:18 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	**create_tab(char *buf)
 	return (tabpd);
 }
 
-static int **read_file(int fd)
+static int	**read_file(int fd)
 {
 	char	*buf;
 

@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:20:13 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 16:50:26 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 17:15:58 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #include <libft.h>
 #include <tetriminos.h>
 
-
-
 static size_t	size_min(int **tabpd)
 {
-	int		i;
-	int		res;
+	int	i;
+	int	res;
 
 	res = 1;
 	i = 0;
@@ -34,42 +32,37 @@ static size_t	size_min(int **tabpd)
 	return (res - 1);
 }
 
+static void		ft_ecritdansgrille(char *grille, int *tabpdi, int k, char c)
+{
+	int j;
 
-static int	ft_placepiece(char *grille, int **tabpd, int i)
+	j = 1;
+	while (j < 5)
+	{
+		grille[tabpdi[j] + k] = c;
+		j++;
+	}
+}
+
+static int		ft_placepiece(char *grille, int **tabpd, int i)
 {
 	int	j;
 	int	k;
-
 
 	k = 0;
 	if (tabpd[i][0] == -1)
 		return (1);
 	while (grille[k])
 	{
-		j = 1;
-		while (j < 5)
-		{
+		j = 0;
+		while (++j < 5)
 			if (grille[tabpd[i][j] + k] != '.')
-				break;
-			j++;
-		}
+				break ;
 		if (j == 5)
 		{
-			j = 1;
-			while (j < 5)
-			{
-				grille[tabpd[i][j] + k] = tabpd[i][0] + 'A';
-				j++;
-			}
+			ft_ecritdansgrille(grille, tabpd[i], k, tabpd[i][0] + 'A');
 			if (!ft_placepiece(grille, tabpd, i + 1))
-			{
-				j = 1;
-				while (j < 5)
-				{
-					grille[tabpd[i][j]+ k]  = '.';
-					j++;
-				}
-			}
+				ft_ecritdansgrille(grille, tabpd[i], k, '.');
 			else
 				return (1);
 		}
@@ -80,8 +73,7 @@ static int	ft_placepiece(char *grille, int **tabpd, int i)
 	return (0);
 }
 
-
-static char	*resolve(int **tabpd, size_t s)
+static char		*resolve(int **tabpd, size_t s)
 {
 	char				*grille;
 	unsigned int		i;
@@ -98,17 +90,17 @@ static char	*resolve(int **tabpd, size_t s)
 		i++;
 	}
 	if (ft_placepiece(grille, tabpd, 0))
-		return(grille);
-	return(NULL);
+		return (grille);
+	return (NULL);
 }
 
-char	*ft_solve(int **tabpd)
+char			*ft_solve(int **tabpd)
 {
 	size_t	s;
 	char	*resultat;
 
 	s = size_min(tabpd);
-	while ((resultat = resolve(ft_transtab(tabpd , s), s)) == NULL)
+	while ((resultat = resolve(ft_transtab(tabpd, s), s)) == NULL)
 	{
 		free(resultat);
 		s++;

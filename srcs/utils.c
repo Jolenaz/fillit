@@ -6,12 +6,12 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:33:29 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/11 18:23:44 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 17:03:52 by jbelless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#define	DEBUG 1
+#define DEBUG 1
 
 void	error(char *error)
 {
