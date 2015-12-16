@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:20:13 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/15 18:40:30 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 16:40:49 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,50 +34,48 @@ static size_t	size_min(int **tabpd)
 	return (res - 1);
 }
 
+
 static int	ft_placepiece(char *grille, int **tabpd, int i)
 {
 	int	j;
 	int	k;
 
-	j = 1;
+
 	k = 0;
 	if (tabpd[i][0] == -1)
 		return (1);
 	while (grille[k])
 	{
+		j = 1;
 		while (j < 5)
 		{
-			ft_putstr(".");
 			if (grille[tabpd[i][j] + k] != '.')
 				break;
 			j++;
 		}
-		if (j != 5)
-			k++;
-		else
+		if (j == 5)
 		{
 			j = 1;
 			while (j < 5)
 			{
-				ft_putnbr(1);
 				grille[tabpd[i][j] + k] = tabpd[i][0] + 'A';
 				j++;
 			}
-			if (ft_placepiece(grille, tabpd, i+1))
+			if (!ft_placepiece(grille, tabpd, i + 1))
 			{
 				j = 1;
 				while (j < 5)
 				{
-					ft_putnbr(2);
 					grille[tabpd[i][j]+ k]  = '.';
 					j++;
 				}
-				ft_putnbr(2);
 			}
 			else
 				return (1);
 		}
 		k++;
+		if (grille[k] == '\n')
+			k++;
 	}
 	return (0);
 }
@@ -99,11 +97,23 @@ static char	*resolve(int **tabpd, size_t s)
 			grille[i] = '.';
 		i++;
 	}
-	ft_putstr(grille);
+	i = 0;
+	int k = 0;
+	while (tabpd[i][0] != -1)
+	{
+		k = 0;
+		while (k < 5)
+		{
+			ft_putnbr(tabpd[i][k]);
+			k++;
+		}
+		ft_putchar('\n');
+		i++;
+
+	}
 	if (ft_placepiece(grille, tabpd, 0))
 		return(grille);
 	return(NULL);
-
 }
 
 char	*ft_solve(int **tabpd)
@@ -113,6 +123,8 @@ char	*ft_solve(int **tabpd)
 
 	s = size_min(tabpd);
 	while ((resultat = resolve(ft_transtab(tabpd , s), s)) == NULL)
+	{
 		s++;
+	}
 	return (resultat);
 }
