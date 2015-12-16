@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:20:13 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 16:47:20 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/16 16:50:26 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ char	*ft_solve(int **tabpd)
 
 	s = size_min(tabpd);
 	while ((resultat = resolve(ft_transtab(tabpd , s), s)) == NULL)
+	{
+		free(resultat);
 		s++;
+	}
 	return (resultat);
 }
