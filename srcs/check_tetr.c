@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:22:27 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 14:36:10 by agaspar          ###   ########.fr       */
+/*   Updated: 2015/12/17 14:10:52 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			check_tetr(char *buf)
 		else if (*buf == '#')
 			++nbh;
 		else if (*buf == '\n' && ((i - i / 21) % 5) != 0 && (i % 21) != 0)
-			error("error position \n ou nombre de \n");
+			error("error position \\n ou nombre de \\n");
 		buf++;
 		i++;
 		if (i % 21 == 0 || *buf == '\0')
@@ -72,7 +72,7 @@ int			check_tetr(char *buf)
 					|| !check_piece(buf - 20))
 				error("nb de . ou nb de #");
 	}
-	if (*(buf - 2) == '\n')
+	if (*(buf - 2) == '\n' || i < 20)
 		return (0);
 	return (1);
 }

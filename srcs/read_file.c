@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:01:49 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 17:04:18 by jbelless         ###   ########.fr       */
+/*   Updated: 2015/12/17 14:12:09 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int			load_file(char *file_name)
 		if ((tabpd = read_file(fd)) == NULL)
 			error("pas de creation de tabpd dans load_file");
 		ft_putstr(ft_solve(tabpd));
+		return (1);
 	}
 	return (0);
 }
