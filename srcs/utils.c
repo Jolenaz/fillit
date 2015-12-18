@@ -6,7 +6,7 @@
 /*   By: agaspar <agaspar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:33:29 by agaspar           #+#    #+#             */
-/*   Updated: 2015/12/16 17:03:52 by jbelless         ###   ########.fr       */
+/*   Updated: 2015/12/18 16:42:38 by agaspar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	error(char *error)
 		ft_putendl(error);
 	}
 	else
-		ft_putendl("Error");
+		ft_putendl("error");
 	exit(EXIT_FAILURE);
 }
